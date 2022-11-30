@@ -32,6 +32,13 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.clientIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientSurnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientMiddleNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passportDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -45,13 +52,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.clientIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientSurnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientMiddleNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passportDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -109,10 +109,63 @@
             this.dataGridView1.DataSource = this.clientBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(458, 44);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(797, 396);
+            this.dataGridView1.Size = new System.Drawing.Size(753, 396);
             this.dataGridView1.TabIndex = 11;
+            // 
+            // clientIdDataGridViewTextBoxColumn
+            // 
+            this.clientIdDataGridViewTextBoxColumn.DataPropertyName = "ClientId";
+            this.clientIdDataGridViewTextBoxColumn.HeaderText = "ID клиента";
+            this.clientIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.clientIdDataGridViewTextBoxColumn.Name = "clientIdDataGridViewTextBoxColumn";
+            this.clientIdDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // clientNameDataGridViewTextBoxColumn
+            // 
+            this.clientNameDataGridViewTextBoxColumn.DataPropertyName = "ClientName";
+            this.clientNameDataGridViewTextBoxColumn.HeaderText = "Имя";
+            this.clientNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.clientNameDataGridViewTextBoxColumn.Name = "clientNameDataGridViewTextBoxColumn";
+            this.clientNameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // clientSurnameDataGridViewTextBoxColumn
+            // 
+            this.clientSurnameDataGridViewTextBoxColumn.DataPropertyName = "ClientSurname";
+            this.clientSurnameDataGridViewTextBoxColumn.HeaderText = "Фамилия";
+            this.clientSurnameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.clientSurnameDataGridViewTextBoxColumn.Name = "clientSurnameDataGridViewTextBoxColumn";
+            this.clientSurnameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // clientMiddleNameDataGridViewTextBoxColumn
+            // 
+            this.clientMiddleNameDataGridViewTextBoxColumn.DataPropertyName = "ClientMiddleName";
+            this.clientMiddleNameDataGridViewTextBoxColumn.HeaderText = "Отчество";
+            this.clientMiddleNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.clientMiddleNameDataGridViewTextBoxColumn.Name = "clientMiddleNameDataGridViewTextBoxColumn";
+            this.clientMiddleNameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // phoneNumberDataGridViewTextBoxColumn
+            // 
+            this.phoneNumberDataGridViewTextBoxColumn.DataPropertyName = "PhoneNumber";
+            this.phoneNumberDataGridViewTextBoxColumn.HeaderText = "Телефон";
+            this.phoneNumberDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.phoneNumberDataGridViewTextBoxColumn.Name = "phoneNumberDataGridViewTextBoxColumn";
+            this.phoneNumberDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // passportDataGridViewTextBoxColumn
+            // 
+            this.passportDataGridViewTextBoxColumn.DataPropertyName = "Passport";
+            this.passportDataGridViewTextBoxColumn.HeaderText = "Passport";
+            this.passportDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.passportDataGridViewTextBoxColumn.Name = "passportDataGridViewTextBoxColumn";
+            this.passportDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // clientBindingSource
+            // 
+            this.clientBindingSource.DataSource = typeof(WinFormsApp1.Client);
             // 
             // button1
             // 
@@ -210,7 +263,7 @@
             this.tabPage2.Location = new System.Drawing.Point(124, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1055, 668);
+            this.tabPage2.Size = new System.Drawing.Size(1273, 668);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Заселение";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -220,62 +273,10 @@
             this.tabPage3.Location = new System.Drawing.Point(124, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1055, 668);
+            this.tabPage3.Size = new System.Drawing.Size(1273, 668);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Выселение";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // clientBindingSource
-            // 
-            this.clientBindingSource.DataSource = typeof(WinFormsApp1.Client);
-            // 
-            // clientIdDataGridViewTextBoxColumn
-            // 
-            this.clientIdDataGridViewTextBoxColumn.DataPropertyName = "ClientId";
-            this.clientIdDataGridViewTextBoxColumn.HeaderText = "ID клиента";
-            this.clientIdDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.clientIdDataGridViewTextBoxColumn.Name = "clientIdDataGridViewTextBoxColumn";
-            this.clientIdDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // clientNameDataGridViewTextBoxColumn
-            // 
-            this.clientNameDataGridViewTextBoxColumn.DataPropertyName = "ClientName";
-            this.clientNameDataGridViewTextBoxColumn.HeaderText = "Имя";
-            this.clientNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.clientNameDataGridViewTextBoxColumn.Name = "clientNameDataGridViewTextBoxColumn";
-            this.clientNameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // clientSurnameDataGridViewTextBoxColumn
-            // 
-            this.clientSurnameDataGridViewTextBoxColumn.DataPropertyName = "ClientSurname";
-            this.clientSurnameDataGridViewTextBoxColumn.HeaderText = "Фамилия";
-            this.clientSurnameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.clientSurnameDataGridViewTextBoxColumn.Name = "clientSurnameDataGridViewTextBoxColumn";
-            this.clientSurnameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // clientMiddleNameDataGridViewTextBoxColumn
-            // 
-            this.clientMiddleNameDataGridViewTextBoxColumn.DataPropertyName = "ClientMiddleName";
-            this.clientMiddleNameDataGridViewTextBoxColumn.HeaderText = "Отчество";
-            this.clientMiddleNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.clientMiddleNameDataGridViewTextBoxColumn.Name = "clientMiddleNameDataGridViewTextBoxColumn";
-            this.clientMiddleNameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // phoneNumberDataGridViewTextBoxColumn
-            // 
-            this.phoneNumberDataGridViewTextBoxColumn.DataPropertyName = "PhoneNumber";
-            this.phoneNumberDataGridViewTextBoxColumn.HeaderText = "Телефон";
-            this.phoneNumberDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.phoneNumberDataGridViewTextBoxColumn.Name = "phoneNumberDataGridViewTextBoxColumn";
-            this.phoneNumberDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // passportDataGridViewTextBoxColumn
-            // 
-            this.passportDataGridViewTextBoxColumn.DataPropertyName = "Passport";
-            this.passportDataGridViewTextBoxColumn.HeaderText = "Passport";
-            this.passportDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.passportDataGridViewTextBoxColumn.Name = "passportDataGridViewTextBoxColumn";
-            this.passportDataGridViewTextBoxColumn.Width = 125;
             // 
             // Form1
             // 
