@@ -51,11 +51,26 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.roomIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BedQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FreeBedQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roomBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.roomBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.roomBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.zaselenieBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zaselenieBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -109,6 +124,7 @@
             this.dataGridView1.DataSource = this.clientBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(458, 44);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
@@ -121,6 +137,7 @@
             this.clientIdDataGridViewTextBoxColumn.HeaderText = "ID клиента";
             this.clientIdDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.clientIdDataGridViewTextBoxColumn.Name = "clientIdDataGridViewTextBoxColumn";
+            this.clientIdDataGridViewTextBoxColumn.ReadOnly = true;
             this.clientIdDataGridViewTextBoxColumn.Width = 125;
             // 
             // clientNameDataGridViewTextBoxColumn
@@ -129,6 +146,7 @@
             this.clientNameDataGridViewTextBoxColumn.HeaderText = "Имя";
             this.clientNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.clientNameDataGridViewTextBoxColumn.Name = "clientNameDataGridViewTextBoxColumn";
+            this.clientNameDataGridViewTextBoxColumn.ReadOnly = true;
             this.clientNameDataGridViewTextBoxColumn.Width = 125;
             // 
             // clientSurnameDataGridViewTextBoxColumn
@@ -137,6 +155,7 @@
             this.clientSurnameDataGridViewTextBoxColumn.HeaderText = "Фамилия";
             this.clientSurnameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.clientSurnameDataGridViewTextBoxColumn.Name = "clientSurnameDataGridViewTextBoxColumn";
+            this.clientSurnameDataGridViewTextBoxColumn.ReadOnly = true;
             this.clientSurnameDataGridViewTextBoxColumn.Width = 125;
             // 
             // clientMiddleNameDataGridViewTextBoxColumn
@@ -145,6 +164,7 @@
             this.clientMiddleNameDataGridViewTextBoxColumn.HeaderText = "Отчество";
             this.clientMiddleNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.clientMiddleNameDataGridViewTextBoxColumn.Name = "clientMiddleNameDataGridViewTextBoxColumn";
+            this.clientMiddleNameDataGridViewTextBoxColumn.ReadOnly = true;
             this.clientMiddleNameDataGridViewTextBoxColumn.Width = 125;
             // 
             // phoneNumberDataGridViewTextBoxColumn
@@ -153,6 +173,7 @@
             this.phoneNumberDataGridViewTextBoxColumn.HeaderText = "Телефон";
             this.phoneNumberDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.phoneNumberDataGridViewTextBoxColumn.Name = "phoneNumberDataGridViewTextBoxColumn";
+            this.phoneNumberDataGridViewTextBoxColumn.ReadOnly = true;
             this.phoneNumberDataGridViewTextBoxColumn.Width = 125;
             // 
             // passportDataGridViewTextBoxColumn
@@ -161,6 +182,7 @@
             this.passportDataGridViewTextBoxColumn.HeaderText = "Passport";
             this.passportDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.passportDataGridViewTextBoxColumn.Name = "passportDataGridViewTextBoxColumn";
+            this.passportDataGridViewTextBoxColumn.ReadOnly = true;
             this.passportDataGridViewTextBoxColumn.Width = 125;
             // 
             // clientBindingSource
@@ -175,6 +197,7 @@
             this.button1.TabIndex = 10;
             this.button1.Text = "Добавить клиента";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox5
             // 
@@ -260,6 +283,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.dataGridView2);
             this.tabPage2.Location = new System.Drawing.Point(124, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -267,6 +291,64 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Заселение";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.roomIdDataGridViewTextBoxColumn,
+            this.BedQty,
+            this.FreeBedQty,
+            this.Price});
+            this.dataGridView2.DataSource = this.roomBindingSource2;
+            this.dataGridView2.Location = new System.Drawing.Point(573, 73);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowHeadersWidth = 51;
+            this.dataGridView2.RowTemplate.Height = 29;
+            this.dataGridView2.Size = new System.Drawing.Size(552, 188);
+            this.dataGridView2.TabIndex = 0;
+            // 
+            // roomIdDataGridViewTextBoxColumn
+            // 
+            this.roomIdDataGridViewTextBoxColumn.DataPropertyName = "RoomId";
+            this.roomIdDataGridViewTextBoxColumn.HeaderText = "RoomId";
+            this.roomIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.roomIdDataGridViewTextBoxColumn.Name = "roomIdDataGridViewTextBoxColumn";
+            this.roomIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.roomIdDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // BedQty
+            // 
+            this.BedQty.DataPropertyName = "BedQty";
+            this.BedQty.HeaderText = "BedQty";
+            this.BedQty.MinimumWidth = 6;
+            this.BedQty.Name = "BedQty";
+            this.BedQty.ReadOnly = true;
+            this.BedQty.Width = 125;
+            // 
+            // FreeBedQty
+            // 
+            this.FreeBedQty.DataPropertyName = "FreeBedQty";
+            this.FreeBedQty.HeaderText = "FreeBedQty";
+            this.FreeBedQty.MinimumWidth = 6;
+            this.FreeBedQty.Name = "FreeBedQty";
+            this.FreeBedQty.ReadOnly = true;
+            this.FreeBedQty.Width = 125;
+            // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "Price";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            this.Price.Width = 125;
+            // 
+            // roomBindingSource2
+            // 
+            this.roomBindingSource2.DataSource = typeof(WinFormsApp1.Room);
             // 
             // tabPage3
             // 
@@ -277,6 +359,18 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Выселение";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // roomBindingSource
+            // 
+            this.roomBindingSource.DataSource = typeof(WinFormsApp1.Room);
+            // 
+            // roomBindingSource1
+            // 
+            this.roomBindingSource1.DataSource = typeof(WinFormsApp1.Room);
+            // 
+            // zaselenieBindingSource
+            // 
+            this.zaselenieBindingSource.DataSource = typeof(WinFormsApp1.Zaselenie);
             // 
             // Form1
             // 
@@ -291,6 +385,12 @@
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zaselenieBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -320,5 +420,14 @@
         private DataGridViewTextBoxColumn phoneNumberDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn passportDataGridViewTextBoxColumn;
         private BindingSource clientBindingSource;
+        private DataGridView dataGridView2;
+        private BindingSource roomBindingSource;
+        private BindingSource zaselenieBindingSource;
+        private BindingSource roomBindingSource1;
+        private BindingSource roomBindingSource2;
+        private DataGridViewTextBoxColumn roomIdDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn BedQty;
+        private DataGridViewTextBoxColumn FreeBedQty;
+        private DataGridViewTextBoxColumn Price;
     }
 }
