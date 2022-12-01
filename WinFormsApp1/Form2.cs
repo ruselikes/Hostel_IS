@@ -28,7 +28,12 @@ namespace WinFormsApp1
   
         private void button1_Click(object sender, EventArgs e)
         {
+            var managers = db.Managers.ToList();
+            foreach (Manager mng in managers)
+            {
+                if (mng.Login == textBox1.Text && mng.Password == textBox2.Text) { }
 
+            }
         }
     }
 }
