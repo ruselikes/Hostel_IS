@@ -12,9 +12,23 @@ namespace WinFormsApp1
 {
     public partial class Form2 : Form
     {
+        HostelDbContext db;
         public Form2()
         {
             InitializeComponent();
+            
+            db = new HostelDbContext();
+
+            Manager man = new Manager{ Mphone = "79048378017", Mname = "Ruslan", Msurname = "Maratkanov", Login = "admin" , Password = "admin" };
+            db.Managers.Add(man);
+            db.SaveChanges();
+        }
+
+
+  
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

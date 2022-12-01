@@ -13,5 +13,10 @@ public partial class Manager
 
     public string Msurname { get; set; } = null!;
 
+    public string Login { get; set; } = null!;
+
+    public string Password { get; set; } = null!;
+
+
     public string? MmiddleName { get; set; }
 }

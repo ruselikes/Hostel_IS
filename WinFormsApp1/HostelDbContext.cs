@@ -51,6 +51,7 @@ public partial class HostelDbContext : DbContext
             entity.Property(e => e.PhoneNumber)
                 .HasMaxLength(15)
                 .IsUnicode(false);
+
         });
 
         modelBuilder.Entity<Manager>(entity =>
@@ -76,6 +77,15 @@ public partial class HostelDbContext : DbContext
                 .HasMaxLength(15)
                 .IsUnicode(false)
                 .HasColumnName("MSurname");
+            entity.Property(e => e.Login)
+                .HasMaxLength(15)
+                .IsUnicode(false)
+                .HasColumnName("Login");
+            entity.Property(e => e.Password)
+                .HasMaxLength(15)
+                .IsUnicode(false)
+                .HasColumnName("Password");
+
         });
 
         modelBuilder.Entity<Room>(entity =>
