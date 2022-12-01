@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.Сбросить = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.clientIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +67,7 @@
             this.roomBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.roomBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.zaselenieBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label7 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -92,6 +97,10 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.Сбросить);
+            this.tabPage1.Controls.Add(this.button3);
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.textBox7);
             this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.textBox5);
@@ -112,6 +121,43 @@
             this.tabPage1.Text = "Клиент";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // Сбросить
+            // 
+            this.Сбросить.Location = new System.Drawing.Point(1136, 44);
+            this.Сбросить.Name = "Сбросить";
+            this.Сбросить.Size = new System.Drawing.Size(94, 29);
+            this.Сбросить.TabIndex = 15;
+            this.Сбросить.Text = "Сбросить";
+            this.Сбросить.UseVisualStyleBackColor = true;
+            this.Сбросить.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(1036, 44);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(94, 29);
+            this.button3.TabIndex = 14;
+            this.button3.Text = "Поиск";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(495, 44);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(145, 20);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Поиск по фамилии:";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(657, 44);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(372, 27);
+            this.textBox7.TabIndex = 12;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AutoGenerateColumns = false;
@@ -124,7 +170,7 @@
             this.phoneNumberDataGridViewTextBoxColumn,
             this.passportDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.clientBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(458, 44);
+            this.dataGridView1.Location = new System.Drawing.Point(477, 90);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
@@ -285,6 +331,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.textBox6);
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.dataGridView2);
@@ -298,14 +345,14 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(149, 91);
+            this.textBox6.Location = new System.Drawing.Point(45, 382);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(125, 27);
             this.textBox6.TabIndex = 2;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(177, 274);
+            this.button2.Location = new System.Drawing.Point(45, 527);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(94, 29);
             this.button2.TabIndex = 1;
@@ -394,6 +441,15 @@
             // 
             this.zaselenieBindingSource.DataSource = typeof(WinFormsApp1.Zaselenie);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(32, 38);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(50, 20);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "label7";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -454,5 +510,10 @@
         private DataGridViewTextBoxColumn Price;
         private Button button2;
         private TextBox textBox6;
+        private Label label6;
+        private TextBox textBox7;
+        private Button Сбросить;
+        private Button button3;
+        private Label label7;
     }
 }

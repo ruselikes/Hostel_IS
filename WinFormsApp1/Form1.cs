@@ -97,5 +97,24 @@ namespace WinFormsApp1
             dataGridView2.DataSource = freerooms;
 
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = db.Clients.ToList();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var surname = "'%"+textBox7.Text + "%'"; 
+            
+            //var search = db.Rooms.FromSqlRaw($"SELECT * FROM Client WHERE ClientSurname = {surname}").ToList();
+            var search = db.Clients.FromSqlRaw($"SELECT * FROM Client WHERE ClientSurname LIKE {surname}").ToList();
+            dataGridView1.DataSource = search;
+        }
     }
 }
