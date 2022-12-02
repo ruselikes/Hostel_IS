@@ -3,6 +3,9 @@ using System.Linq;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic.ApplicationServices;
+using System.Numerics;
+using Hostel;
+using System.Data;
 
 namespace WinFormsApp1
 
@@ -10,6 +13,22 @@ namespace WinFormsApp1
     public partial class Form1 : Form
     {
         HostelDbContext db;
+        public void GetDatafromZasClient() 
+        {
+            var zasandclient = db.Zaselenies.Include(c => c.Client).ToList();
+            List<ZasANDClient> list = zasandclient.Select(x => new ZasANDClient
+            {
+                ZaselenieId = x.ZaselenieId,
+                RoomId = x.RoomId,
+                ClientId = x.ClientId,
+                ClientName = x.Client.ClientName,
+                ClientSurname = x.Client.ClientSurname,
+                DataZasel = x.DataZasel,
+                DataVisel = x.DataVisel,
+
+            }).ToList();
+            dataGridView5.DataSource = list;
+        }
         public Form1()
         { 
             InitializeComponent();
@@ -17,7 +36,7 @@ namespace WinFormsApp1
 
             db = new HostelDbContext();
 
-          /*  Room room = new Room { BedQty = 10, FreeBedQty = 10,Price = 1500};
+            /*Room room = new Room { BedQty = 10, FreeBedQty = 10,Price = 1500};
             Room room1 = new Room { BedQty = 10, FreeBedQty = 10, Price = 1500 };
             Room room2 = new Room { BedQty = 10, FreeBedQty = 10, Price = 1500 };
             Room room3 = new Room { BedQty = 10, FreeBedQty = 10, Price = 1500 };
@@ -39,12 +58,43 @@ namespace WinFormsApp1
             button2.Enabled = false;
             dataGridView1.DataSource = db.Clients.ToList();
             dataGridView2.DataSource = db.Rooms.ToList();
-            dataGridView3.DataSource = db.Clients.ToList();
+            var search = db.Clients.FromSqlRaw($"SELECT * FROM Client WHERE NOT EXISTS (SELECT * FROM Zaselenie WHERE Zaselenie.ClientId = Client.ClientId);").ToList();
+            dataGridView3.DataSource = search;
+
+            /*var search = db.Zaselenies.FromSqlRaw("SELECT z.ZaselenieId,c.ClientID,c.ClientSurname,c.ClientName, r.BedQty,z.DataZasel,z.DataVisel FROM Zaselenie z JOIN Client c ON z.ClientID = c.ClientID JOIN Room r z.RoomID = r.RoomID").ToList();
+            ;*/
+            /*dataGridView2.DataSource = db.Rooms.ToList();*/
+            /*var zaslist = from z in db.Zaselenies 
+                        join c in db.Clients on z.ClientId equals c.ClientId join r in db.Rooms on z.RoomId equals r.RoomId
+                        select new { ZaselenieId = z.ZaselenieId, ClientID = z.ClientId, ClientSurname = c.ClientSurname, ClientName = c.ClientName, BedQty = r.BedQty, DataZasel = z.DataZasel, DataVisel = z.DataVisel };
+            dataGridView4.DataSource = zaslist;*/
             /*dataGridView2.DataSource = db.Rooms.ToList();*/
 
 
+            /*var search = db.Zaselenies.FromSqlRaw("SELECT z.ZaselenieId,c.ClientID,c.ClientSurname,z.RoomId, z.DataZasel,z.DataVisel FROM Zaselenie z JOIN Client c ON z.ClientID = c.ClientID ").ToList();
+            dataGridView4.DataSource = search;
+            dataGridView4.Columns[0].HeaderText = "ID заселения";
+            dataGridView4.Columns[1].HeaderText = "ID клиента";
+            dataGridView4.Columns[2].HeaderText = "Фамилия";
+            //dataGridView4.Columns[3].HeaderText = "Имя";
+            dataGridView4.Columns[3].HeaderText = "Room ID";
+            dataGridView4.Columns[4].HeaderText = "Дата заселения";
+            dataGridView4.Columns[5].HeaderText = "Дата выселения";*/
+            /*c.ClientName, JOIN Room r ON z.RoomID = r.RoomID r.BedQty, */
+
+
+            var zasandclient = db.Zaselenies.Include(c => c.Client).ToList();
+
+            GetDatafromZasClient();
+            /*var testquery = db.Zaselenies.FromSqlRaw("SELECT ZaselenieId,DataVisel, DataZasel, z.ClientId,c.ClientName from Zaselenie z JOIN Client c ON z.ClientID = c.ClientID").ToList();
+            dataGridView5.DataSource = testquery;*/
+
+            /* List<ZasANDClient> zasclients = new();
+             foreach (ZasAndClient zc in zasclient)*/
+
+
         }
-        
+
 
 
         private void label1_Click(object sender, EventArgs e)
@@ -106,34 +156,55 @@ namespace WinFormsApp1
         {
             textBox6.Text = dataGridView2.CurrentRow.Cells[0].Value.ToString();
         }
-
+        /// <summary>
+        /// dadsdsadasd
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-
-            Zaselenie zaselenie = new Zaselenie();
-            zaselenie.RoomId = Convert.ToInt32(textBox6.Text);
-            zaselenie.ClientId = Convert.ToInt32(textBox10.Text);
-            DateTime date1 = Convert.ToDateTime(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
-            zaselenie.DataZasel = date1;
-            DateTime date2 = Convert.ToDateTime(dateTimePicker2.Value.ToString("yyyy-MM-dd"));
-            zaselenie.DataVisel = date2;
-
-
-            if (DateTime.Compare(date1, date2) < 0)
+            try
             {
-                // добавляем в бд    
-                db.Zaselenies.Add(zaselenie);
-                db.SaveChanges();
-                MessageBox.Show("Оформление прошло успешно!");
-            }
-            else { MessageBox.Show("Введите корректные данные!"); }
-            
-            
-            /*
-                        var free = Convert.ToInt32(textBox6.Text);
+                Zaselenie zaselenie = new Zaselenie();
+                zaselenie.RoomId = Convert.ToInt32(textBox6.Text);
+                zaselenie.ClientId = Convert.ToInt32(textBox10.Text);
+                DateTime date1 = Convert.ToDateTime(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
+                zaselenie.DataZasel = date1;
+                DateTime date2 = Convert.ToDateTime(dateTimePicker2.Value.ToString("yyyy-MM-dd"));
+                zaselenie.DataVisel = date2;
 
-                        var freerooms = db.Rooms.FromSqlRaw($"SELECT * FROM Room WHERE FreeBedQty >= {free}").ToList();
-                        dataGridView2.DataSource = freerooms;*/
+                //Уменьшаем количество свободных мест при заселении нового клиента
+                
+                db.SaveChanges();
+/*                var free = Convert.ToInt32(textBox8.Text);
+                var places = 0;
+                if (comboBox1.SelectedIndex == 0) { places = 10; }
+                if (comboBox1.SelectedIndex == 1) { places = 5; }
+                if (comboBox1.SelectedIndex == 2) { places = 2; }
+                var freerooms = db.Rooms.FromSqlRaw($"SELECT * FROM Room WHERE FreeBedQty >= {free} AND BedQty = {places}").ToList();
+                dataGridView2.DataSource = freerooms;*/
+
+                //var freerooms = db.Rooms.FromSqlRaw($"SELECT * FROM Room WHERE FreeBedQty >= {free} AND BedQty = {places}").ToList();
+                //dataGridView2.DataSource = freerooms;  
+
+
+                if (DateTime.Compare(date1, date2) < 0)
+                {
+                    // добавляем в бд    
+                    db.Zaselenies.Add(zaselenie);
+                    string roomid = textBox6.Text;
+                    int numberOfRowUpdated = db.Database.ExecuteSqlRaw($"UPDATE Room SET FreeBedQty -=1  WHERE RoomId={roomid}");
+                    db.SaveChanges();
+                    MessageBox.Show("Оформление прошло успешно!");
+                }
+                else { MessageBox.Show("Введите корректные данные!"); }
+            }
+            catch
+            {
+                MessageBox.Show("Введите корректные данные");
+            }
+
+
 
         }
 
@@ -178,8 +249,11 @@ namespace WinFormsApp1
             if(comboBox1.SelectedIndex == 0) { places = 10; }
             if(comboBox1.SelectedIndex == 1) { places = 5; }
             if(comboBox1.SelectedIndex == 2) { places = 2; }
+            
             var freerooms = db.Rooms.FromSqlRaw($"SELECT * FROM Room WHERE FreeBedQty >= {free} AND BedQty = {places}").ToList();
+            db.SaveChanges();
             dataGridView2.DataSource = freerooms;
+            dataGridView2.Refresh();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -205,13 +279,15 @@ namespace WinFormsApp1
         private void button6_Click(object sender, EventArgs e)
         {
             var surname = "'%" + textBox9.Text + "%'";
-            var search = db.Clients.FromSqlRaw($"SELECT * FROM Client WHERE ClientSurname LIKE {surname}").ToList();
+            var search = db.Clients.FromSqlRaw($"SELECT * FROM Client WHERE ClientSurname LIKE {surname} AND NOT EXISTS (SELECT * FROM Zaselenie WHERE Zaselenie.ClientId = Client.ClientId);").ToList();
             dataGridView3.DataSource = search;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            dataGridView3.DataSource = db.Clients.ToList();
+           
+            var search = db.Clients.FromSqlRaw($"SELECT * FROM Client WHERE NOT EXISTS (SELECT * FROM Zaselenie WHERE Zaselenie.ClientId = Client.ClientId);").ToList();
+            dataGridView3.DataSource = search;
         }
 
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -229,6 +305,45 @@ namespace WinFormsApp1
         private void Form1_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBox11.Text = dataGridView5.CurrentRow.Cells[4].Value.ToString();
+            textBox12.Text = dataGridView5.CurrentRow.Cells[2].Value.ToString() + " " +dataGridView5.CurrentRow.Cells[3].Value.ToString();
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            var room = textBox11.Text;
+            var zasid = dataGridView5.CurrentRow.Cells[0].Value.ToString();
+            int onesql = db.Database.ExecuteSqlRaw($"DELETE FROM Zaselenie WHERE ZaselenieID = {zasid}");
+            int twosql = db.Database.ExecuteSqlRaw($"UPDATE Room SET FreeBedQty +=1  WHERE RoomId={room}");
+            db.SaveChanges();
+            GetDatafromZasClient();
+
+
+
+        }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
