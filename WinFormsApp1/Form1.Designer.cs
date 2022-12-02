@@ -87,10 +87,18 @@
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roomBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.zaselenieIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientIdDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roomIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataZaselDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataViselDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zaselenieBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.roomBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.roomBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.roomBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.zaselenieBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -99,10 +107,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource2)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zaselenieBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zaselenieBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -691,6 +701,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.dataGridView4);
             this.tabPage3.Location = new System.Drawing.Point(124, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -698,6 +709,88 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Выселение";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView4
+            // 
+            this.dataGridView4.AllowUserToAddRows = false;
+            this.dataGridView4.AllowUserToDeleteRows = false;
+            this.dataGridView4.AutoGenerateColumns = false;
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.zaselenieIdDataGridViewTextBoxColumn,
+            this.clientIdDataGridViewTextBoxColumn2,
+            this.roomIdDataGridViewTextBoxColumn1,
+            this.dataZaselDataGridViewTextBoxColumn,
+            this.dataViselDataGridViewTextBoxColumn,
+            this.clientDataGridViewTextBoxColumn,
+            this.roomDataGridViewTextBoxColumn});
+            this.dataGridView4.DataSource = this.zaselenieBindingSource;
+            this.dataGridView4.Location = new System.Drawing.Point(105, 51);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.RowHeadersWidth = 51;
+            this.dataGridView4.RowTemplate.Height = 29;
+            this.dataGridView4.Size = new System.Drawing.Size(1034, 245);
+            this.dataGridView4.TabIndex = 0;
+            // 
+            // zaselenieIdDataGridViewTextBoxColumn
+            // 
+            this.zaselenieIdDataGridViewTextBoxColumn.DataPropertyName = "ZaselenieId";
+            this.zaselenieIdDataGridViewTextBoxColumn.HeaderText = "ZaselenieId";
+            this.zaselenieIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.zaselenieIdDataGridViewTextBoxColumn.Name = "zaselenieIdDataGridViewTextBoxColumn";
+            this.zaselenieIdDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // clientIdDataGridViewTextBoxColumn2
+            // 
+            this.clientIdDataGridViewTextBoxColumn2.DataPropertyName = "ClientId";
+            this.clientIdDataGridViewTextBoxColumn2.HeaderText = "ClientId";
+            this.clientIdDataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.clientIdDataGridViewTextBoxColumn2.Name = "clientIdDataGridViewTextBoxColumn2";
+            this.clientIdDataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // roomIdDataGridViewTextBoxColumn1
+            // 
+            this.roomIdDataGridViewTextBoxColumn1.DataPropertyName = "RoomId";
+            this.roomIdDataGridViewTextBoxColumn1.HeaderText = "RoomId";
+            this.roomIdDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.roomIdDataGridViewTextBoxColumn1.Name = "roomIdDataGridViewTextBoxColumn1";
+            this.roomIdDataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // dataZaselDataGridViewTextBoxColumn
+            // 
+            this.dataZaselDataGridViewTextBoxColumn.DataPropertyName = "DataZasel";
+            this.dataZaselDataGridViewTextBoxColumn.HeaderText = "DataZasel";
+            this.dataZaselDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dataZaselDataGridViewTextBoxColumn.Name = "dataZaselDataGridViewTextBoxColumn";
+            this.dataZaselDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // dataViselDataGridViewTextBoxColumn
+            // 
+            this.dataViselDataGridViewTextBoxColumn.DataPropertyName = "DataVisel";
+            this.dataViselDataGridViewTextBoxColumn.HeaderText = "DataVisel";
+            this.dataViselDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dataViselDataGridViewTextBoxColumn.Name = "dataViselDataGridViewTextBoxColumn";
+            this.dataViselDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // clientDataGridViewTextBoxColumn
+            // 
+            this.clientDataGridViewTextBoxColumn.DataPropertyName = "Client";
+            this.clientDataGridViewTextBoxColumn.HeaderText = "Client";
+            this.clientDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.clientDataGridViewTextBoxColumn.Name = "clientDataGridViewTextBoxColumn";
+            this.clientDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // roomDataGridViewTextBoxColumn
+            // 
+            this.roomDataGridViewTextBoxColumn.DataPropertyName = "Room";
+            this.roomDataGridViewTextBoxColumn.HeaderText = "Room";
+            this.roomDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.roomDataGridViewTextBoxColumn.Name = "roomDataGridViewTextBoxColumn";
+            this.roomDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // zaselenieBindingSource
+            // 
+            this.zaselenieBindingSource.DataSource = typeof(WinFormsApp1.Zaselenie);
             // 
             // roomBindingSource3
             // 
@@ -711,10 +804,6 @@
             // 
             this.roomBindingSource1.DataSource = typeof(WinFormsApp1.Room);
             // 
-            // zaselenieBindingSource
-            // 
-            this.zaselenieBindingSource.DataSource = typeof(WinFormsApp1.Zaselenie);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -722,7 +811,8 @@
             this.ClientSize = new System.Drawing.Size(1425, 700);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Управление Хостелом v1.0";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -733,10 +823,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource2)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zaselenieBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zaselenieBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -805,5 +897,13 @@
         private DataGridViewTextBoxColumn clientNameDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn clientMiddleNameDataGridViewTextBoxColumn1;
         private TextBox textBox10;
+        private DataGridView dataGridView4;
+        private DataGridViewTextBoxColumn zaselenieIdDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn clientIdDataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn roomIdDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataZaselDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dataViselDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn clientDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn roomDataGridViewTextBoxColumn;
     }
 }

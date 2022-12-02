@@ -19,9 +19,9 @@ namespace WinFormsApp1
             
             db = new HostelDbContext();
 
-            Manager man = new Manager{ Mphone = "79048378017", Mname = "Ruslan", Msurname = "Maratkanov", Login = "admin" , Password = "admin" };
+            /*Manager man = new Manager { Mphone = "79048378017", Mname = "Ruslan", Msurname = "Maratkanov", Login = "admin", Password = "admin" };
             db.Managers.Add(man);
-            db.SaveChanges();
+            db.SaveChanges();*/
         }
 
 
@@ -31,9 +31,23 @@ namespace WinFormsApp1
             var managers = db.Managers.ToList();
             foreach (Manager mng in managers)
             {
-                if (mng.Login == textBox1.Text && mng.Password == textBox2.Text) { }
+                if (mng.Login == textBox1.Text && mng.Password == textBox2.Text)
+                {
+                    this.Hide();
+                    Form1 f1 = new Form1();
+                    f1.Closed += (s, args) => this.Close();
+                    f1.Show();
+                    break;
+                    
+                }
+                
 
             }
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+           
         }
     }
 }

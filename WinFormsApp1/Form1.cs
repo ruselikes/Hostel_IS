@@ -2,6 +2,7 @@ using System.Windows.Forms;
 using System.Linq;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace WinFormsApp1
 
@@ -222,6 +223,11 @@ namespace WinFormsApp1
         {
             
             if (radioButton1.Checked) { button2.Enabled = true; }
+            
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
             
         }
     }
