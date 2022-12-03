@@ -156,17 +156,26 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            Client client = new Client();
-            client.ClientName = textBox1.Text;
-            client.ClientSurname = textBox2.Text;
-            client.ClientMiddleName = textBox3.Text;
-            client.PhoneNumber = textBox4.Text;
-            client.Passport = textBox5.Text;
-            // добавляем в бд    
-            db.Clients.Add(client);
-            db.SaveChanges();
-            dataGridView1.DataSource = db.Clients.ToList();
+            try
+            {
+                Client client = new Client();
+                client.ClientName = textBox1.Text;
+                client.ClientSurname = textBox2.Text;
+                client.ClientMiddleName = textBox3.Text;
+                client.PhoneNumber = textBox4.Text;
+                client.Passport = textBox5.Text;
+                // добавляем в бд    
+                db.Clients.Add(client);
+                db.SaveChanges();
+                dataGridView1.DataSource = db.Clients.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -358,6 +367,32 @@ namespace WinFormsApp1
 
         private void tabPage3_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            var client = dataGridView5.CurrentRow.Cells[0].Value.ToString();
+            int sql = db.Database.ExecuteSqlRaw($"DELETE FROM Client WHERE ClientID = {client}");
+            int onesql = db.Database.ExecuteSqlRaw($"DELETE FROM Zaselenie WHERE ClientId = {client}");
+            int twosql = db.Database.ExecuteSqlRaw($"UPDATE Room SET FreeBedQty +=1  WHERE ClientId={client}");
+            db.SaveChanges();
+            GetDatafromZasClient();
 
         }
     }

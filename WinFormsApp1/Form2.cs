@@ -28,8 +28,7 @@ namespace WinFormsApp1
   
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
+            var flag = false;
                 var managers = db.Managers.ToList();
                 foreach (Manager mng in managers)
                 {
@@ -39,17 +38,17 @@ namespace WinFormsApp1
                         Form1 f1 = new Form1();
                         f1.Closed += (s, args) => this.Close();
                         f1.Show();
+                        flag = true;
                         break;
+                        
 
                     }
+                
 
                 }
+            if (flag == false) {MessageBox.Show("Неправильный пароль/логин.Попробуйте снова");}
+
             }
-            catch
-            {
-                MessageBox.Show("Неправильный пароль/логин.Попробуйте снова");
-            }
-        }
 
         private void Form2_Load(object sender, EventArgs e)
         {
