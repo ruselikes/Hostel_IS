@@ -193,16 +193,7 @@ namespace WinFormsApp1
                 //”меньшаем количество свободных мест при заселении нового клиента
                 
                 db.SaveChanges();
-/*                var free = Convert.ToInt32(textBox8.Text);
-                var places = 0;
-                if (comboBox1.SelectedIndex == 0) { places = 10; }
-                if (comboBox1.SelectedIndex == 1) { places = 5; }
-                if (comboBox1.SelectedIndex == 2) { places = 2; }
-                var freerooms = db.Rooms.FromSqlRaw($"SELECT * FROM Room WHERE FreeBedQty >= {free} AND BedQty = {places}").ToList();
-                dataGridView2.DataSource = freerooms;*/
-
-                //var freerooms = db.Rooms.FromSqlRaw($"SELECT * FROM Room WHERE FreeBedQty >= {free} AND BedQty = {places}").ToList();
-                //dataGridView2.DataSource = freerooms;  
+ 
 
 
                 if (DateTime.Compare(date1, date2) < 0)
@@ -215,6 +206,9 @@ namespace WinFormsApp1
                     MessageBox.Show("ќформление прошло успешно!");
                 }
                 else { MessageBox.Show("¬ведите корректные данные!"); }
+
+                var search = db.Clients.FromSqlRaw($"SELECT * FROM Client WHERE NOT EXISTS (SELECT * FROM Zaselenie WHERE Zaselenie.ClientId = Client.ClientId);").ToList();
+                dataGridView3.DataSource = search;
             }
             catch
             {
