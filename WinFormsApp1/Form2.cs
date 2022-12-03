@@ -28,20 +28,26 @@ namespace WinFormsApp1
   
         private void button1_Click(object sender, EventArgs e)
         {
-            var managers = db.Managers.ToList();
-            foreach (Manager mng in managers)
+            try
             {
-                if (mng.Login == textBox1.Text && mng.Password == textBox2.Text)
+                var managers = db.Managers.ToList();
+                foreach (Manager mng in managers)
                 {
-                    this.Hide();
-                    Form1 f1 = new Form1();
-                    f1.Closed += (s, args) => this.Close();
-                    f1.Show();
-                    break;
-                    
-                }
-                
+                    if (mng.Login == textBox1.Text && mng.Password == textBox2.Text)
+                    {
+                        this.Hide();
+                        Form1 f1 = new Form1();
+                        f1.Closed += (s, args) => this.Close();
+                        f1.Show();
+                        break;
 
+                    }
+
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Неправильный пароль/логин.Попробуйте снова");
             }
         }
 

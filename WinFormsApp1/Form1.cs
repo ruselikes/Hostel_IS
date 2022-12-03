@@ -27,7 +27,10 @@ namespace WinFormsApp1
                 DataVisel = x.DataVisel,
 
             }).ToList();
+
             dataGridView5.DataSource = list;
+
+
         }
         public Form1()
         { 
@@ -35,6 +38,9 @@ namespace WinFormsApp1
 
 
             db = new HostelDbContext();
+         
+
+            
 
             /*Room room = new Room { BedQty = 10, FreeBedQty = 10,Price = 1500};
             Room room1 = new Room { BedQty = 10, FreeBedQty = 10, Price = 1500 };
@@ -51,7 +57,7 @@ namespace WinFormsApp1
             {
                 db.Rooms.Remove(r);
             }*/
-           
+
 
             db.SaveChanges();
 
@@ -85,12 +91,23 @@ namespace WinFormsApp1
 
             var zasandclient = db.Zaselenies.Include(c => c.Client).ToList();
 
+            
+            
             GetDatafromZasClient();
+            dataGridView5.Columns[0].HeaderText = "ID заселения";
+            dataGridView5.Columns[1].HeaderText = "ID клиента";
+            dataGridView5.Columns[2].HeaderText = "Имя";
+            dataGridView5.Columns[3].HeaderText = "Фамилия";
+            dataGridView5.Columns[4].HeaderText = " N комнаты";
+            dataGridView5.Columns[5].HeaderText = "Дата заселения";
+            dataGridView5.Columns[6].HeaderText = "Дата выселения";
             /*var testquery = db.Zaselenies.FromSqlRaw("SELECT ZaselenieId,DataVisel, DataZasel, z.ClientId,c.ClientName from Zaselenie z JOIN Client c ON z.ClientID = c.ClientID").ToList();
             dataGridView5.DataSource = testquery;*/
 
             /* List<ZasANDClient> zasclients = new();
              foreach (ZasAndClient zc in zasclient)*/
+
+
 
 
         }
@@ -244,16 +261,20 @@ namespace WinFormsApp1
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            var free = Convert.ToInt32(textBox8.Text);
-            var places = 0;
-            if(comboBox1.SelectedIndex == 0) { places = 10; }
-            if(comboBox1.SelectedIndex == 1) { places = 5; }
-            if(comboBox1.SelectedIndex == 2) { places = 2; }
-            
-            var freerooms = db.Rooms.FromSqlRaw($"SELECT * FROM Room WHERE FreeBedQty >= {free} AND BedQty = {places}").ToList();
-            db.SaveChanges();
-            dataGridView2.DataSource = freerooms;
-            dataGridView2.Refresh();
+            try
+            {
+                var free = Convert.ToInt32(textBox8.Text);
+                var places = 0;
+                if (comboBox1.SelectedIndex == 0) { places = 10; }
+                if (comboBox1.SelectedIndex == 1) { places = 5; }
+                if (comboBox1.SelectedIndex == 2) { places = 2; }
+
+                var freerooms = db.Rooms.FromSqlRaw($"SELECT * FROM Room WHERE FreeBedQty >= {free} AND BedQty = {places}").ToList();
+                db.SaveChanges();
+                dataGridView2.DataSource = freerooms;
+                dataGridView2.Refresh();
+            }
+            catch { MessageBox.Show("Введите корректные данные!"); }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

@@ -666,7 +666,7 @@
             // roomIdDataGridViewTextBoxColumn
             // 
             this.roomIdDataGridViewTextBoxColumn.DataPropertyName = "RoomId";
-            this.roomIdDataGridViewTextBoxColumn.HeaderText = "RoomId";
+            this.roomIdDataGridViewTextBoxColumn.HeaderText = "№ комнаты";
             this.roomIdDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.roomIdDataGridViewTextBoxColumn.Name = "roomIdDataGridViewTextBoxColumn";
             this.roomIdDataGridViewTextBoxColumn.ReadOnly = true;
@@ -675,7 +675,7 @@
             // BedQty
             // 
             this.BedQty.DataPropertyName = "BedQty";
-            this.BedQty.HeaderText = "BedQty";
+            this.BedQty.HeaderText = "Число мест";
             this.BedQty.MinimumWidth = 6;
             this.BedQty.Name = "BedQty";
             this.BedQty.ReadOnly = true;
@@ -684,7 +684,7 @@
             // FreeBedQty
             // 
             this.FreeBedQty.DataPropertyName = "FreeBedQty";
-            this.FreeBedQty.HeaderText = "FreeBedQty";
+            this.FreeBedQty.HeaderText = "Свободные места";
             this.FreeBedQty.MinimumWidth = 6;
             this.FreeBedQty.Name = "FreeBedQty";
             this.FreeBedQty.ReadOnly = true;
@@ -693,7 +693,7 @@
             // Price
             // 
             this.Price.DataPropertyName = "Price";
-            this.Price.HeaderText = "Price";
+            this.Price.HeaderText = "Стоимость";
             this.Price.MinimumWidth = 6;
             this.Price.Name = "Price";
             this.Price.ReadOnly = true;
@@ -768,7 +768,6 @@
             this.dataGridView5.AllowUserToAddRows = false;
             this.dataGridView5.AllowUserToDeleteRows = false;
             this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView5.ColumnHeadersVisible = false;
             this.dataGridView5.Location = new System.Drawing.Point(56, 36);
             this.dataGridView5.Name = "dataGridView5";
             this.dataGridView5.ReadOnly = true;
@@ -859,10 +858,6 @@
         private BindingSource zaselenieBindingSource;
         private BindingSource roomBindingSource1;
         private BindingSource roomBindingSource2;
-        private DataGridViewTextBoxColumn roomIdDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn BedQty;
-        private DataGridViewTextBoxColumn FreeBedQty;
-        private DataGridViewTextBoxColumn Price;
         private Button button2;
         private TextBox textBox6;
         private Label label6;
@@ -900,5 +895,9 @@
         private TextBox textBox12;
         private TextBox textBox11;
         private Button button7;
+        private DataGridViewTextBoxColumn roomIdDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn BedQty;
+        private DataGridViewTextBoxColumn FreeBedQty;
+        private DataGridViewTextBoxColumn Price;
     }
 }
