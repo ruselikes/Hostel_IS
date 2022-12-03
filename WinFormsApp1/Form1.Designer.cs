@@ -31,6 +31,17 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button8 = new System.Windows.Forms.Button();
             this.Сбросить = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -42,7 +53,6 @@
             this.clientMiddleNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passportDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -100,11 +110,12 @@
             this.roomBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.roomBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.roomBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.button8 = new System.Windows.Forms.Button();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -135,6 +146,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label20);
+            this.tabPage1.Controls.Add(this.label19);
+            this.tabPage1.Controls.Add(this.dataGridView4);
             this.tabPage1.Controls.Add(this.button8);
             this.tabPage1.Controls.Add(this.Сбросить);
             this.tabPage1.Controls.Add(this.button3);
@@ -160,9 +174,117 @@
             this.tabPage1.Text = "Клиент";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(493, 26);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(173, 20);
+            this.label20.TabIndex = 19;
+            this.label20.Text = "Незаселенные клиенты";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(493, 391);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(155, 20);
+            this.label19.TabIndex = 18;
+            this.label19.Text = "Заселенные клиенты";
+            this.label19.Click += new System.EventHandler(this.label19_Click);
+            // 
+            // dataGridView4
+            // 
+            this.dataGridView4.AutoGenerateColumns = false;
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
+            this.dataGridView4.DataSource = this.clientBindingSource;
+            this.dataGridView4.Location = new System.Drawing.Point(495, 423);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.ReadOnly = true;
+            this.dataGridView4.RowHeadersVisible = false;
+            this.dataGridView4.RowHeadersWidth = 51;
+            this.dataGridView4.RowTemplate.Height = 29;
+            this.dataGridView4.Size = new System.Drawing.Size(753, 218);
+            this.dataGridView4.TabIndex = 17;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ClientId";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID клиента";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "ClientName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Имя";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "ClientSurname";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Фамилия";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "ClientMiddleName";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Отчество";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "PhoneNumber";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Телефон";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Passport";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Passport";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 125;
+            // 
+            // clientBindingSource
+            // 
+            this.clientBindingSource.DataSource = typeof(WinFormsApp1.Client);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(1071, 341);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(177, 46);
+            this.button8.TabIndex = 16;
+            this.button8.Text = "Удалить";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // Сбросить
             // 
-            this.Сбросить.Location = new System.Drawing.Point(1136, 44);
+            this.Сбросить.Location = new System.Drawing.Point(1154, 55);
             this.Сбросить.Name = "Сбросить";
             this.Сбросить.Size = new System.Drawing.Size(94, 29);
             this.Сбросить.TabIndex = 15;
@@ -172,7 +294,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1036, 44);
+            this.button3.Location = new System.Drawing.Point(1054, 55);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(94, 29);
             this.button3.TabIndex = 14;
@@ -183,7 +305,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(495, 44);
+            this.label6.Location = new System.Drawing.Point(493, 55);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(145, 20);
             this.label6.TabIndex = 13;
@@ -192,7 +314,7 @@
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(657, 44);
+            this.textBox7.Location = new System.Drawing.Point(655, 55);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(372, 27);
             this.textBox7.TabIndex = 12;
@@ -209,14 +331,15 @@
             this.phoneNumberDataGridViewTextBoxColumn,
             this.passportDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.clientBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(477, 90);
+            this.dataGridView1.Location = new System.Drawing.Point(495, 90);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(753, 396);
+            this.dataGridView1.Size = new System.Drawing.Size(753, 240);
             this.dataGridView1.TabIndex = 11;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // clientIdDataGridViewTextBoxColumn
             // 
@@ -272,10 +395,6 @@
             this.passportDataGridViewTextBoxColumn.ReadOnly = true;
             this.passportDataGridViewTextBoxColumn.Width = 125;
             // 
-            // clientBindingSource
-            // 
-            this.clientBindingSource.DataSource = typeof(WinFormsApp1.Client);
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(152, 583);
@@ -290,6 +409,7 @@
             // 
             this.textBox5.Location = new System.Drawing.Point(80, 522);
             this.textBox5.Name = "textBox5";
+            this.textBox5.PlaceholderText = "xxxxxxxxxx";
             this.textBox5.Size = new System.Drawing.Size(372, 27);
             this.textBox5.TabIndex = 9;
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged_1);
@@ -307,6 +427,7 @@
             // 
             this.textBox4.Location = new System.Drawing.Point(80, 413);
             this.textBox4.Name = "textBox4";
+            this.textBox4.PlaceholderText = "+7XXXXXXXXXX";
             this.textBox4.Size = new System.Drawing.Size(372, 27);
             this.textBox4.TabIndex = 7;
             // 
@@ -323,6 +444,7 @@
             // 
             this.textBox3.Location = new System.Drawing.Point(80, 303);
             this.textBox3.Name = "textBox3";
+            this.textBox3.PlaceholderText = "Иванович";
             this.textBox3.Size = new System.Drawing.Size(372, 27);
             this.textBox3.TabIndex = 5;
             // 
@@ -339,6 +461,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(79, 194);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PlaceholderText = "Иванов";
             this.textBox2.Size = new System.Drawing.Size(372, 27);
             this.textBox2.TabIndex = 3;
             // 
@@ -365,6 +488,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(80, 90);
             this.textBox1.Name = "textBox1";
+            this.textBox1.PlaceholderText = "Иван";
             this.textBox1.Size = new System.Drawing.Size(372, 27);
             this.textBox1.TabIndex = 0;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
@@ -825,15 +949,10 @@
             // 
             this.roomBindingSource1.DataSource = typeof(WinFormsApp1.Room);
             // 
-            // button8
+            // notifyIcon1
             // 
-            this.button8.Location = new System.Drawing.Point(1053, 503);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(177, 46);
-            this.button8.TabIndex = 16;
-            this.button8.Text = "Удалить";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
             // 
             // Form1
             // 
@@ -848,8 +967,9 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
@@ -941,5 +1061,15 @@
         private Label label17;
         private Label label18;
         private Button button8;
+        private Label label19;
+        private DataGridView dataGridView4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private Label label20;
+        private NotifyIcon notifyIcon1;
     }
 }

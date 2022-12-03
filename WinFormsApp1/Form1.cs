@@ -6,6 +6,7 @@ using Microsoft.VisualBasic.ApplicationServices;
 using System.Numerics;
 using Hostel;
 using System.Data;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WinFormsApp1
 
@@ -13,7 +14,7 @@ namespace WinFormsApp1
     public partial class Form1 : Form
     {
         HostelDbContext db;
-        public void GetDatafromZasClient() 
+        public void DoRefresh() 
         {
             var zasandclient = db.Zaselenies.Include(c => c.Client).ToList();
             List<ZasANDClient> list = zasandclient.Select(x => new ZasANDClient
@@ -29,7 +30,10 @@ namespace WinFormsApp1
             }).ToList();
 
             dataGridView5.DataSource = list;
-
+            dataGridView1.DataSource = db.Clients.FromSqlRaw($"SELECT * FROM Client WHERE NOT EXISTS (SELECT * FROM Zaselenie WHERE Zaselenie.ClientId = Client.ClientId);").ToList();
+            dataGridView4.DataSource = db.Clients.FromSqlRaw($"SELECT * FROM Client WHERE EXISTS (SELECT * FROM Zaselenie WHERE Zaselenie.ClientId = Client.ClientId);").ToList();
+            dataGridView2.DataSource = db.Rooms.ToList();
+            dataGridView3.DataSource = db.Clients.FromSqlRaw($"SELECT * FROM Client WHERE NOT EXISTS (SELECT * FROM Zaselenie WHERE Zaselenie.ClientId = Client.ClientId);").ToList();
 
         }
         public Form1()
@@ -62,10 +66,10 @@ namespace WinFormsApp1
             db.SaveChanges();
 
             button2.Enabled = false;
-            dataGridView1.DataSource = db.Clients.ToList();
+            dataGridView1.DataSource = db.Clients.FromSqlRaw($"SELECT * FROM Client WHERE NOT EXISTS (SELECT * FROM Zaselenie WHERE Zaselenie.ClientId = Client.ClientId);").ToList();
+            dataGridView4.DataSource = db.Clients.FromSqlRaw($"SELECT * FROM Client WHERE EXISTS (SELECT * FROM Zaselenie WHERE Zaselenie.ClientId = Client.ClientId);").ToList();
             dataGridView2.DataSource = db.Rooms.ToList();
-            var search = db.Clients.FromSqlRaw($"SELECT * FROM Client WHERE NOT EXISTS (SELECT * FROM Zaselenie WHERE Zaselenie.ClientId = Client.ClientId);").ToList();
-            dataGridView3.DataSource = search;
+            dataGridView3.DataSource = db.Clients.FromSqlRaw($"SELECT * FROM Client WHERE NOT EXISTS (SELECT * FROM Zaselenie WHERE Zaselenie.ClientId = Client.ClientId);").ToList();
 
             /*var search = db.Zaselenies.FromSqlRaw("SELECT z.ZaselenieId,c.ClientID,c.ClientSurname,c.ClientName, r.BedQty,z.DataZasel,z.DataVisel FROM Zaselenie z JOIN Client c ON z.ClientID = c.ClientID JOIN Room r z.RoomID = r.RoomID").ToList();
             ;*/
@@ -91,9 +95,9 @@ namespace WinFormsApp1
 
             var zasandclient = db.Zaselenies.Include(c => c.Client).ToList();
 
-            
-            
-            GetDatafromZasClient();
+
+
+            DoRefresh();
             dataGridView5.Columns[0].HeaderText = "ID заселени€";
             dataGridView5.Columns[1].HeaderText = "ID клиента";
             dataGridView5.Columns[2].HeaderText = "»м€";
@@ -167,11 +171,17 @@ namespace WinFormsApp1
                 // добавл€ем в бд    
                 db.Clients.Add(client);
                 db.SaveChanges();
-                dataGridView1.DataSource = db.Clients.ToList();
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox5.Text = "";
+
+                DoRefresh();
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("¬ведите корректные данные!");
             }
 
 
@@ -212,12 +222,12 @@ namespace WinFormsApp1
                     string roomid = textBox6.Text;
                     int numberOfRowUpdated = db.Database.ExecuteSqlRaw($"UPDATE Room SET FreeBedQty -=1  WHERE RoomId={roomid}");
                     db.SaveChanges();
+                    
                     MessageBox.Show("ќформление прошло успешно!");
                 }
                 else { MessageBox.Show("¬ведите корректные данные!"); }
 
-                var search = db.Clients.FromSqlRaw($"SELECT * FROM Client WHERE NOT EXISTS (SELECT * FROM Zaselenie WHERE Zaselenie.ClientId = Client.ClientId);").ToList();
-                dataGridView3.DataSource = search;
+                DoRefresh();
             }
             catch
             {
@@ -235,7 +245,7 @@ namespace WinFormsApp1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = db.Clients.ToList();
+            DoRefresh();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -359,8 +369,8 @@ namespace WinFormsApp1
             int onesql = db.Database.ExecuteSqlRaw($"DELETE FROM Zaselenie WHERE ZaselenieID = {zasid}");
             int twosql = db.Database.ExecuteSqlRaw($"UPDATE Room SET FreeBedQty +=1  WHERE RoomId={room}");
             db.SaveChanges();
-            GetDatafromZasClient();
-
+            DoRefresh();
+        
 
 
         }
@@ -387,12 +397,27 @@ namespace WinFormsApp1
 
         private void button8_Click(object sender, EventArgs e)
         {
-            var client = dataGridView5.CurrentRow.Cells[0].Value.ToString();
+            var client = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            
             int sql = db.Database.ExecuteSqlRaw($"DELETE FROM Client WHERE ClientID = {client}");
-            int onesql = db.Database.ExecuteSqlRaw($"DELETE FROM Zaselenie WHERE ClientId = {client}");
-            int twosql = db.Database.ExecuteSqlRaw($"UPDATE Room SET FreeBedQty +=1  WHERE ClientId={client}");
             db.SaveChanges();
-            GetDatafromZasClient();
+            dataGridView1.DataSource = db.Clients.FromSqlRaw($"SELECT * FROM Client WHERE NOT EXISTS (SELECT * FROM Zaselenie WHERE Zaselenie.ClientId = Client.ClientId);").ToList();
+            DoRefresh();
+
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
