@@ -276,7 +276,7 @@ namespace WinFormsApp1
         {
             try
             {
-                var free = Convert.ToInt32(textBox8.Text);
+                var free = textBox8.Text;
                 var places = 0;
                 if (comboBox1.SelectedIndex == 0) { places = 10; }
                 if (comboBox1.SelectedIndex == 1) { places = 5; }
@@ -285,7 +285,7 @@ namespace WinFormsApp1
                 var freerooms = db.Rooms.FromSqlRaw($"SELECT * FROM Room WHERE FreeBedQty >= {free} AND BedQty = {places}").ToList();
                 db.SaveChanges();
                 dataGridView2.DataSource = freerooms;
-                dataGridView2.Refresh();
+                //dataGridView2.Refresh();
             }
             catch { MessageBox.Show("¬ведите корректные данные!"); }
         }

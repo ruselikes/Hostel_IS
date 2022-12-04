@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hostel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace WinFormsApp1
 {
@@ -35,6 +37,9 @@ namespace WinFormsApp1
                     if (mng.Login == textBox1.Text && mng.Password == textBox2.Text)
                     {
                         this.Hide();
+                        
+                        
+
                         Form1 f1 = new Form1();
                         f1.Closed += (s, args) => this.Close();
                         f1.Show();
@@ -53,6 +58,13 @@ namespace WinFormsApp1
         private void Form2_Load(object sender, EventArgs e)
         {
            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+          
+            Form3 f3 = new Form3();
+            f3.Show();
         }
     }
 }
