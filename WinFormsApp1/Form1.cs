@@ -364,13 +364,16 @@ namespace WinFormsApp1
 
         private void button7_Click(object sender, EventArgs e)
         {
-            var room = textBox11.Text;
-            var zasid = dataGridView5.CurrentRow.Cells[0].Value.ToString();
-            int onesql = db.Database.ExecuteSqlRaw($"DELETE FROM Zaselenie WHERE ZaselenieID = {zasid}");
-            int twosql = db.Database.ExecuteSqlRaw($"UPDATE Room SET FreeBedQty +=1  WHERE RoomId={room}");
-            db.SaveChanges();
-            DoRefresh();
-        
+            try
+            {
+                var room = textBox11.Text;
+                var zasid = dataGridView5.CurrentRow.Cells[0].Value.ToString();
+                int onesql = db.Database.ExecuteSqlRaw($"DELETE FROM Zaselenie WHERE ZaselenieID = {zasid}");
+                int twosql = db.Database.ExecuteSqlRaw($"UPDATE Room SET FreeBedQty +=1  WHERE RoomId={room}");
+                db.SaveChanges();
+                DoRefresh();
+            }
+            catch { MessageBox.Show("¬ведите корректные данные!"); }
 
 
         }
